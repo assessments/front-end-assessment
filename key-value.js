@@ -5,10 +5,10 @@
 
 function Foo() {
 
-	//values is a private property
+	//values is a private object property
 	var values = {};
 
-	//set() is public method
+	//set() is a public method
 	this.set = function (key, value) {
 		values[key] = value;
 	};
