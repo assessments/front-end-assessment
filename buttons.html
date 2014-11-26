@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <title>Front-end assessment</title>
+<style>
+/*
+ Issues in the original CSS:
+
+  1) syntax error: both font-size and line-height are ignored for submit-button (because of missing semicolon)
+
+  2) repition of text styles misses the point of the cascade (inheritance and specificity) and violates the 
+      DRY principle (Don't Repeat Yourself)
+
+  3) overcomplexity: is it really necessary to have different font rules for different button types?
+
+  4) redundancy: buttons are already inline elements, so 'inline-block' doesn't add anything without more context  
+
+  5) redundancy: there is no obvious gain from making #signup-button a descendent of #sidebar without more context
+
+  6) submit and signup buttons use IDs as selectors, preventing their reuse on one page (consider classes instead)
+
+  7) consider using a CSS reset for consistent cross-browser behaviour
+
+  8) consider using image sprites for background icons (solution not shown), or even better icon fonts
+*/
+
+/*
+ original CSS
+
+body {
+ font-size: 15px;
+ line-height: 1.5;
+ font-family: helvetica, arial, sans-serif;
+}
+
+#submit-button {
+ padding: 10px 5px 15px 10px;
+ background: green url(../img/icon-tick.png) no-repeat left center;
+ display: inline-block;
+ font-family: sans-serif;
+ font-size: 15px
+ line-height: 1.5;
+}
+
+.cancel-button-action {
+ font-size: 15px;
+ font-family: helvetica, arial, sans-serif;
+ background: url(../img/icon-cancel.png) no-repeat right center;
+ padding-right 30px;
+ line-height: 1.5;
+}
+
+#sidebar #signup-button {
+ background-color: blue;
+ font-family: helvetica, arial, sans-serif;
+}
+*/
+
+/*
+ improved CSS (example only - does not preserve exact appearance)
+*/
+
+body, button {
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: helvetica, arial, sans-serif;
+}
+
+.submit-button {
+  padding: 10px 5px 15px 10px;
+  background: green url(../img/icon-tick.png) no-repeat left center;
+  /*font-family: sans-serif;*/ /*override font family only if needed*/
+}
+
+.cancel-button-action {
+  background: url(../img/icon-cancel.png) no-repeat right center;
+  padding-right 30px;
+}
+
+.signup-button {
+  background-color: blue;
+  /*font-size: 13px;*/ /*override font size only if needed*/
+}
+
+</style>
+ </head>
+ <body>
+    <button type="button" class="submit-button">Submit</button>
+    <button type="button" class="cancel-button-action">Cancel</button>
+    <div id="sidebar"><button type="button" class="signup-button">Sign up</button></div>
+ </body>
+</html>
