@@ -1,6 +1,6 @@
 
 /*
- The Foo class implements private properties by Douglas Crockford's method
+ The Foo class implements private properties by Douglas Crockford's approach
 */
 
 function Foo() {
